@@ -131,7 +131,7 @@ void showdigitfillframe(uint32_t frame[], uint32_t startpos, uint64_t digit, int
   pixels.setBrightness(10);
   pixels.clear();
   flipper.attach(2, isrFunc); //tickerObj.attach(timeInSecs,isrFunction)
-  changetemp.attach(10, changetempflag);
+  changetemp.attach(2, changetempflag);
   timeClient.begin();
 
 
@@ -207,7 +207,7 @@ void transfertostrip(Adafruit_NeoPixel pixels, uint32_t frame[]){
 void changetempflag(){
     
   showtempcount +=1;
-  if (showtempcount > 5){
+  if (showtempcount > 3){
     showtempcount = 0;
     tempflag = true;
   }else{
