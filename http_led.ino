@@ -43,7 +43,8 @@ bool closedisplay = false;
 bool tempflag = true;
 static uint8_t showtempcount = 0;
 
-const long utcOffsetInSeconds = 39600;
+//const long utcOffsetInSeconds = 39600; //daytime saving
+const long utcOffsetInSeconds = 36000; // withoudt daytime saving 
 
 char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 WiFiUDP ntpUDP;
@@ -365,19 +366,19 @@ void loop() {
   // Match the request
  
   int value = LOW;
-  if (request.indexOf("/LED=ON") != -1)  {
+  if (request.indexOf("/LED=%20on") != -1)  {
 //    digitalWrite(ledPin, HIGH);
     bobflag = true;
   }
-  if (request.indexOf("/LED=OFF") != -1)  {
+  if (request.indexOf("/LED=%20off") != -1)  {
 //    digitalWrite(ledPin, LOW);
     bobflag = false;
   }
 
-  if (request.indexOf("/DISPLAY=ON") != -1)  {
+  if (request.indexOf("/DISPLAY=%20on") != -1)  {
     closedisplay = false;
   }
-  if (request.indexOf("/DISPLAY=OFF") != -1)  {
+  if (request.indexOf("/DISPLAY=%20off") != -1)  {
     closedisplay = true;
   }
 
@@ -411,15 +412,15 @@ void loop() {
   
   
   client.println("<br><br>");
-  client.println("<a href=\"/LED=ON\"\"><button><font size=\"20\" color=\"blue\">Turn On </font> </button></a>");
-  client.println("<a href=\"/LED=OFF\"\"><button><font size=\"20\" color=\"black\">Turn Off </font> </button></a><br />");  
+  client.println("<a href=\"/LED=%20on\"\"><button><font size=\"20\" color=\"blue\">Turn On </font> </button></a>");
+  client.println("<a href=\"/LED=%20off\"\"><button><font size=\"20\" color=\"black\">Turn Off </font> </button></a><br />");  
 
   client.println("<br><br>");
 
 
   
-  client.println("<a href=\"/DISPLAY=ON\"\"><button><font size=\"20\" color=\"blue\">Turn On </font> </button></a>");
-  client.println("<a href=\"/DISPLAY=OFF\"\"><button><font size=\"20\" color=\"black\">Turn Off </font> </button></a><br />");  
+  client.println("<a href=\"/DISPLAY=%20on\"\"><button><font size=\"20\" color=\"blue\">Turn On </font> </button></a>");
+  client.println("<a href=\"/DISPLAY=%20off\"\"><button><font size=\"20\" color=\"black\">Turn Off </font> </button></a><br />");  
   
   client.println("</html>");
 
