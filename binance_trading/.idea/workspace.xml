@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1651048e-d062-4515-a627-8bf3ac395594" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1hLGvbADjdTWH4HO7ainQbBY3yd" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RunManager" selected="Python.server">
+    <configuration name="main.py.bak" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="binance_trading" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py.bak" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="server" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="binance_trading" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/server.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.server" />
+        <item itemvalue="Python.main.py.bak" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1651048e-d062-4515-a627-8bf3ac395594" name="Default Changelist" comment="" />
+      <created>1599783190178</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1599783190178</updated>
+      <workItem from="1599783195027" duration="946000" />
+      <workItem from="1599784250947" duration="39000" />
+      <workItem from="1599784299835" duration="2637000" />
+      <workItem from="1599879340251" duration="4220000" />
+      <workItem from="1599884823655" duration="287000" />
+      <workItem from="1599896159299" duration="1671000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="420" y="163" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599783601599">
+      <screen x="0" y="23" width="1680" height="951" />
+    </state>
+    <state x="420" y="163" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.951@0.23.1680.951" timestamp="1599783601599" />
+    <state x="704" y="350" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599882717478">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="704" y="350" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1599882717478" />
+    <state width="1878" height="578" key="GridCell.Tab.0.bottom" timestamp="1599893343867">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1638" height="578" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1599786352654" />
+    <state width="1878" height="578" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1599893343867" />
+    <state width="1358" height="578" key="GridCell.Tab.0.bottom/0.23.1680.951@0.23.1680.951" timestamp="1599787547062" />
+    <state width="1358" height="578" key="GridCell.Tab.0.bottom/0.23.1920.981@0.23.1920.981" timestamp="1599879514528" />
+    <state width="1878" height="578" key="GridCell.Tab.0.center" timestamp="1599893343866">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1638" height="578" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1599786352653" />
+    <state width="1878" height="578" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1599893343866" />
+    <state width="1358" height="578" key="GridCell.Tab.0.center/0.23.1680.951@0.23.1680.951" timestamp="1599787547061" />
+    <state width="1358" height="578" key="GridCell.Tab.0.center/0.23.1920.981@0.23.1920.981" timestamp="1599879514527" />
+    <state width="1878" height="578" key="GridCell.Tab.0.left" timestamp="1599893343865">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1638" height="578" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1599786352652" />
+    <state width="1878" height="578" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1599893343865" />
+    <state width="1358" height="578" key="GridCell.Tab.0.left/0.23.1680.951@0.23.1680.951" timestamp="1599787547061" />
+    <state width="1358" height="578" key="GridCell.Tab.0.left/0.23.1920.981@0.23.1920.981" timestamp="1599879514526" />
+    <state width="1878" height="578" key="GridCell.Tab.0.right" timestamp="1599893343867">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1638" height="578" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1599786352653" />
+    <state width="1878" height="578" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1599893343867" />
+    <state width="1358" height="578" key="GridCell.Tab.0.right/0.23.1680.951@0.23.1680.951" timestamp="1599787547062" />
+    <state width="1358" height="578" key="GridCell.Tab.0.right/0.23.1920.981@0.23.1920.981" timestamp="1599879514527" />
+    <state x="457" y="140" key="SettingsEditor" timestamp="1599784289945">
+      <screen x="0" y="23" width="1680" height="951" />
+    </state>
+    <state x="457" y="140" key="SettingsEditor/0.23.1680.951@0.23.1680.951" timestamp="1599784289945" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/binance_trading$main.coverage" NAME="main Coverage Results" MODIFIED="1599879585587" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/binance_trading$server.coverage" NAME="server Coverage Results" MODIFIED="1599884843189" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>

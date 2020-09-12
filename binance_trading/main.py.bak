@@ -1,0 +1,29 @@
+
+from binance.client import Client
+import json
+
+api_key="ckUg0iSmUGRkev85dM3MrstZcjPhDqvc0znL6PIaMmTf6QZl5ObKpWl0FO9wF1qZ"
+api_secret="vAxzSEpi1QG5OVw67Ivp3IXa7AqDXO1NeW5Q2iHZIlK0XGDug41KX8NkEAGsNVxS"
+
+
+
+
+def GetPrice():
+    socketserver.
+
+if __name__ == "__main__":
+    client = Client(api_key, api_secret)
+    balance = client.get_asset_balance(asset="BTC")
+    print(balance)
+    # trades = client.get_my_trades(symbol='BTCBUSD')
+
+    avg_price = client.get_avg_price(symbol='BTCBUSD')
+    print(avg_price)
+
+# # the price we buy the btc is 10420 and we buy 0.001 btc
+#     order = client.order_limit_buy(
+#         symbol='BTCBUSD',
+#         quantity=0.03,
+#         price='10300')
+#
+#     print(order)

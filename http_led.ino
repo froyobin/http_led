@@ -5,6 +5,8 @@
 #include <Adafruit_NeoPixel.h>
 #include <OneWire.h>
 #include <DallasTemperature.h>
+#include <DigitLedDisplay.h>
+
 
 
 #ifdef __AVR__
@@ -13,21 +15,31 @@
 
 // Which pin on the Arduino is connected to the NeoPixels?
 #define PIN        12 // On Trinket or Gemma, suggest changing this to 1
-
-
 //define the DS1802b port
 #define ONE_WIRE_BUS 14
-// Setup a oneWire instance to communicate with any OneWire devices (not just Maxim/Dallas temperature ICs)
-OneWire oneWire(ONE_WIRE_BUS);
-
-// Pass our oneWire reference to Dallas Temperature. 
-DallasTemperature sensors(&oneWire);
 
 // How many NeoPixels are attached to the Arduino?
 #define NUMPIXELS 256 // Popular NeoPixel ring size
 
 // When setting up the NeoPixel library, we tell it how many pixel
 #define DELAYVAL 500 // Time (in milliseconds) to pause between pixels
+
+// define visit URL
+#define SERVERPATH "http://192.168.0.8:6666"
+//define pins for 7 segment LED
+#define DIN  2
+#define  CS  0
+#define CLK  4
+
+DigitLedDisplay ld = DigitLedDisplay(DIN, CS, CLK);
+
+// Setup a oneWire instance to communicate with any OneWire devices (not just Maxim/Dallas temperature ICs)
+OneWire oneWire(ONE_WIRE_BUS);
+
+// Pass our oneWire reference to Dallas Temperature. 
+DallasTemperature sensors(&oneWire);
+
+
 
 
 Ticker flipper;
@@ -42,8 +54,10 @@ bool bobflag = false;
 bool closedisplay = false;
 bool tempflag = true;
 static uint8_t showtempcount = 0;
+int price = 0;
 
-const long utcOffsetInSeconds = 39600;
+//const long utcOffsetInSeconds = 39600; //daytime saving
+const long utcOffsetInSeconds = 36000; // withoudt daytime saving 
 
 char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 WiFiUDP ntpUDP;
@@ -82,8 +96,8 @@ void showdigitfillframe(uint32_t frame[], uint32_t startpos, uint64_t digit, int
     }
 }
 
-   void setup()
-   {
+void setup()
+{
        Serial.begin(115200);
        delay(10);
 
@@ -134,6 +148,12 @@ void showdigitfillframe(uint32_t frame[], uint32_t startpos, uint64_t digit, int
   changetemp.attach(2, changetempflag);
   timeClient.begin();
 
+// init the 7 segment led
+ /* Set the brightness min:1, max:15 */
+  ld.setBright(10);
+
+  /* Set the digit count */
+  ld.setDigitLimit(8);
 
 }
 
@@ -145,7 +165,7 @@ void addstripdot(uint32_t frame[], int color){
     frame[14 * 8 + i] = color;
   }
 
-//  for (int j=0;j<3;j++){
+
     int j=0;
     frame[14 * 8 + 8*j+7] = 0;
     frame[14 * 8 + 8*j+6] = 0;
@@ -164,12 +184,7 @@ void addstripdot(uint32_t frame[], int color){
     frame[14 * 8 + 8*j+5] = 0;
     frame[14 * 8 + 8*j+4] = 0;
     frame[14 * 8 + 8*j+3] = 0;
-    
-    
 
-
-    
-//  }
   
 }
 
@@ -214,10 +229,10 @@ void changetempflag(){
     tempflag= false;
     }
   
-
-  
   
 }
+
+
 
 void isrFunc()
 {
@@ -234,6 +249,11 @@ void isrFunc()
     clock[2]=(temp100%1000)/100;
     clock[1]=(temp100%100)/10;
     clock[0]=temp100%10;
+
+//we get the biance price
+
+    ld.printDigit(price);
+
 
 
   }else{
@@ -303,7 +323,7 @@ void isrFunc()
       
      }else{
     
-          if (flag ==  true){
+          if (flag == true){
                   addstripframe(frame, 2);
                  
                   flag = false;
@@ -365,20 +385,31 @@ void loop() {
   // Match the request
  
   int value = LOW;
-  if (request.indexOf("/LED=ON") != -1)  {
+  if (request.indexOf("/LED=%20on") != -1)  {
 //    digitalWrite(ledPin, HIGH);
     bobflag = true;
   }
-  if (request.indexOf("/LED=OFF") != -1)  {
+  if (request.indexOf("/LED=%20off") != -1)  {
 //    digitalWrite(ledPin, LOW);
     bobflag = false;
   }
 
-  if (request.indexOf("/DISPLAY=ON") != -1)  {
+  if (request.indexOf("/DISPLAY=%20on") != -1)  {
     closedisplay = false;
   }
-  if (request.indexOf("/DISPLAY=OFF") != -1)  {
+  if (request.indexOf("/DISPLAY=%20off") != -1)  {
     closedisplay = true;
+  }
+
+  if (request.indexOf("/price=") != -1)  {
+  int pos1 = request.indexOf("=");
+  int pos2 = request.lastIndexOf("=");
+  String strvalue = request.substring(pos1+1,pos2);
+  Serial.println(pos1);
+  Serial.println(pos2);
+  price = strvalue.toInt();
+  Serial.println(price);
+
   }
 
   
@@ -411,15 +442,15 @@ void loop() {
   
   
   client.println("<br><br>");
-  client.println("<a href=\"/LED=ON\"\"><button><font size=\"20\" color=\"blue\">Turn On </font> </button></a>");
-  client.println("<a href=\"/LED=OFF\"\"><button><font size=\"20\" color=\"black\">Turn Off </font> </button></a><br />");  
+  client.println("<a href=\"/LED=%20on\"\"><button><font size=\"20\" color=\"blue\">Turn On </font> </button></a>");
+  client.println("<a href=\"/LED=%20off\"\"><button><font size=\"20\" color=\"black\">Turn Off </font> </button></a><br />");  
 
   client.println("<br><br>");
 
 
   
-  client.println("<a href=\"/DISPLAY=ON\"\"><button><font size=\"20\" color=\"blue\">Turn On </font> </button></a>");
-  client.println("<a href=\"/DISPLAY=OFF\"\"><button><font size=\"20\" color=\"black\">Turn Off </font> </button></a><br />");  
+  client.println("<a href=\"/DISPLAY=%20on\"\"><button><font size=\"20\" color=\"blue\">Turn On </font> </button></a>");
+  client.println("<a href=\"/DISPLAY=%20off\"\"><button><font size=\"20\" color=\"black\">Turn Off </font> </button></a><br />");  
   
   client.println("</html>");
 
