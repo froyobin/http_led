@@ -79,6 +79,7 @@ uint64_t DIGITS[10] = {0x007e8181817e, 0x000082ff8000, 0x0041c1859171, 0x0042818
 
 void closeLED() {
   digitalWrite(ledPin, HIGH);
+ 
 }
 
 
@@ -404,7 +405,7 @@ void loop() {
   }
 
   if (request.indexOf("/daylightsaving=%20enable") != -1)  {
-    timeClient.setTimeOffset(39000);
+    timeClient.setTimeOffset(39600);
   }
   if (request.indexOf("/daylightsaving=%20disable") != -1)  {
     timeClient.setTimeOffset(36000);
