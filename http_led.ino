@@ -56,7 +56,7 @@ bool closedisplay = false;
 bool tempflag = true;
 static uint8_t showtempcount = 0;
 int price = 0;
-long utcOffsetInSeconds = 36000; // withoudt daytime saving
+long utcOffsetInSeconds = 39600; // withoudt daytime saving
 
 char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 WiFiUDP ntpUDP;
@@ -422,7 +422,7 @@ void loop() {
 
     digitalWrite(ledPin, LOW);
 
-    closeLEDtimer1.once_ms(200, closeLED);
+    closeLEDtimer1.once_ms(50, closeLED);
 
   }
 
