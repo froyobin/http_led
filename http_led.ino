@@ -6,6 +6,7 @@
 #include <OneWire.h>
 #include <DallasTemperature.h>
 #include <DigitLedDisplay.h>
+void ICACHE_RAM_ATTR handleInterrupt();
 
 
 
@@ -24,12 +25,16 @@
 // When setting up the NeoPixel library, we tell it how many pixel
 #define DELAYVAL 500 // Time (in milliseconds) to pause between pixels
 
+#define  INTERRUPTPIN  13
+
 // define visit URL
 #define SERVERPATH "http://192.168.0.8:6666"
 //define pins for 7 segment LED
 #define DIN  5
 #define  CS  0
 #define CLK  4
+
+
 
 DigitLedDisplay ld = DigitLedDisplay(DIN, CS, CLK);
 
@@ -79,7 +84,6 @@ uint64_t DIGITS[10] = {0x007e8181817e, 0x000082ff8000, 0x0041c1859171, 0x0042818
 
 void closeLED() {
   digitalWrite(ledPin, HIGH);
- 
 }
 
 
@@ -159,9 +163,24 @@ void setup()
 
   /* Set the digit count */
   ld.setDigitLimit(8);
+  // define pin interrupt to close the display
+  pinMode(INTERRUPTPIN, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(INTERRUPTPIN), handleInterrupt, FALLING);
 
 }
 
+
+void handleInterrupt() {
+  closedisplay = !closedisplay;
+  //close get price indicator
+  if (closedisplay) {
+    closeLED();
+    ld.off();
+  } else {
+    ld.on();
+  }
+
+}
 
 
 void addstripdot(uint32_t frame[], int color) {
@@ -374,8 +393,6 @@ void loop() {
   }
 
 
-
-
   // Wait until the client sends some data
   Serial.println("new client");
   while (!client.available()) {
@@ -413,7 +430,7 @@ void loop() {
 
 
 
-  if (request.indexOf("/price=") != -1)  {
+  if (request.indexOf("/price=") != -1 && !closedisplay)  {
     int pos1 = request.indexOf("=");
     int pos2 = request.lastIndexOf("=");
     String strvalue = request.substring(pos1 + 1, pos2);
