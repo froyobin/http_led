@@ -50,6 +50,7 @@ DallasTemperature sensors(&oneWire);
 Ticker flipper;
 Ticker changetemp;
 Ticker closeLEDtimer1;// once, 2 seconds later
+Ticker checkButtonTimer; //check whether the button is still low
 const char* ssid = "wrt1";
 const char* password = "11Mortonstreet";
 
@@ -165,12 +166,19 @@ void setup()
   ld.setDigitLimit(8);
   // define pin interrupt to close the display
   pinMode(INTERRUPTPIN, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(INTERRUPTPIN), handleInterrupt, FALLING);
+  attachInterrupt(digitalPinToInterrupt(INTERRUPTPIN), handleInterrupt, HIGH);
 
 }
 
+void ButtonstatusCheck() {
 
-void handleInterrupt() {
+  int  buttonState = digitalRead(INTERRUPTPIN);
+  if (buttonState == LOW) {
+      Serial.println("status low.....");
+
+    return;
+  }
+  Serial.println("status high.....");
   closedisplay = !closedisplay;
   //close get price indicator
   if (closedisplay) {
@@ -180,6 +188,12 @@ void handleInterrupt() {
     ld.on();
   }
 
+}
+
+
+void handleInterrupt() {
+  Serial.println("new interrupt.....");
+  checkButtonTimer.once_ms(1000, ButtonstatusCheck);
 }
 
 
@@ -208,8 +222,6 @@ void addstripdot(uint32_t frame[], int color) {
   frame[14 * 8 + 8 * j + 5] = 0;
   frame[14 * 8 + 8 * j + 4] = 0;
   frame[14 * 8 + 8 * j + 3] = 0;
-
-
 }
 
 
@@ -264,6 +276,9 @@ void isrFunc()
   int h = 0;
   int m = 0;
   int clock[4];
+
+  //we get the biance price
+  ld.printDigit(price);
   if (tempflag == true) {
     sensors.requestTemperatures(); // Send the command to get temperatures
     float tempval = sensors.getTempCByIndex(0);
@@ -273,13 +288,6 @@ void isrFunc()
     clock[2] = (temp100 % 1000) / 100;
     clock[1] = (temp100 % 100) / 10;
     clock[0] = temp100 % 10;
-
-    //we get the biance price
-
-    ld.printDigit(price);
-
-
-
   } else {
     int h = timeClient.getHours();
     int m = timeClient.getMinutes();
@@ -310,10 +318,8 @@ void isrFunc()
 
 
   if (closedisplay == true) {
-
     pixels.clear();
     pixels.show();
-
     return;
   }
 
